@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Welcome to Django {{ name }}</h2>
+    <form action="add" method="post">
+        {% csrf_token %}
+        Enter 1st Number: <input type="text" name="num1" /> <br/>
+        Enter 2nd Number: <input type="text" name="num2" /> <br>
+        <input type="submit" />
+    </form>
+    <ul>
+        {% for book in books %}
+            <li>
+                <strong>{{ book.title }}</strong><br>
+                Author: {{ book.author }}<br>
+                Published: {{ book.published_date }}<br>
+                ISBN: {{ book.isbn }}<br><br>
+            </li>
+        {% empty %}
+            <li>No books available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
